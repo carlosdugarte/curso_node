@@ -70,3 +70,33 @@ class Contenedor {
 }
 
 
+//Testear métodos
+
+//Instacia contenedor
+const contenedor = new Contenedor('productos.txt');
+
+//1. getById(Number)
+// (async () => {  /****** Descomentar para probar ******/
+//     console.log(await contenedor.getById(1))
+// })();
+
+//2. getAll()
+// (async () => {  /****** Descomentar para probar ******/
+//     console.log(await contenedor.getAll())
+// })();
+
+//3. deleteById(Number)
+// contenedor.deleteById(4); /****** Descomentar para probar ******/
+
+//4. deleteAll()
+// contenedor.deleteAll();  /****** Descomentar para probar ******/
+
+//5. save(Object)
+// const obj = {           /****** Descomentar para probar ******/
+//     "title": "carlos",
+//     "price": 999,
+//     "thumbnail": "url5"
+// };
+
+//contenedor.save(obj); /****** Descomentar para probar ******/
+
