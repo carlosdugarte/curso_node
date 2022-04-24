@@ -1,7 +1,7 @@
 # INITIALIZE THE CHALLENGE
 
 # 1. Please execute the following script to start the server in port 8080
-npm run start-dev
+npm run start
 
 # 2. Call the endpoints in the browser
 
