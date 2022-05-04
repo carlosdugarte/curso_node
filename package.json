@@ -1,0 +1,25 @@
+{
+  "name": "desafio3_servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start-dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosdugarte/curso_node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosdugarte/curso_node/issues"
+  },
+  "homepage": "https://github.com/carlosdugarte/curso_node#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
