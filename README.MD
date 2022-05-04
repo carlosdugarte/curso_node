@@ -1,18 +1,30 @@
 # INITIALIZE THE CHALLENGE
 
 # 1. Please execute the following script to start the server in port 8080
-npm run start
+node server.js
 
 # 2. Call the endpoints in the browser
+GET:
+http://localhost:8080/api/productos/
+http://localhost:8080/api/productos/:id
 
-http://localhost:8080/productos
+ADD a product with a form:
+POST:
+http://localhost:8080/index.html
 
-http://localhost:8080/productorandom
+# 3. Call the endpoints in postman
 
+GET:
+http://localhost:8080/api/productos/
+http://localhost:8080/api/productos/:id
 
-# 3. Glitch endpoints 
+POST: 
+http://localhost:8080/api/productos
 
-https://node-portequenos.glitch.me/productos
+PUT:
+http://localhost:8080/api/productos/:id
 
-https://node-portequenos.glitch.me/productorandom
+DELETE:
+http://localhost:8080/api/productos/:id
+
 
