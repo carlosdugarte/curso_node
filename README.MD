@@ -6,6 +6,7 @@ node server.js
 # 2. Call the endpoints in the browser
 GET:
 http://localhost:8080/api/productos/
+GET:
 http://localhost:8080/api/productos/:id
 
 ADD a product with a form:
@@ -16,6 +17,8 @@ http://localhost:8080/index.html
 
 GET:
 http://localhost:8080/api/productos/
+
+GET:
 http://localhost:8080/api/productos/:id
 
 POST: 
