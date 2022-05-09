@@ -1,0 +1,42 @@
+html(lang="en")
+    head 
+        title="Plantilla pug"
+        link(
+            rel="stylesheet" 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+            integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+            crossorigin="anonymous"
+        )
+        link(
+            rel="stylesheet" 
+            href="/css/estilos.css"
+        )
+    body
+        div(class="container mt-3")            
+            div(class="jumbotron")
+                h1(class="titulos")= "Vista de Productos Template PUG"
+                br
+                if existProducts
+                    table(class="table table-striped table-dark table-sm")
+                        thead
+                            tr 
+                                th(scope="col")="NAME"
+                                th(scope="col")="PRICE"
+                                th(scope="col")="PHOTO"
+                        tbody
+                            each val in products
+                                tr 
+                                    td=val.title
+                                    td=val.price
+                                    td: img(
+                                        class="img-fluid" 
+                                        style="width:100px;height:100px;" 
+                                        src=val.thumbnail  
+                                        alt="not found"
+                                    )
+                else
+                    h3(class="alert alert-warning")= "No se encontraron productos"
+
+                br
+                a(href="/" type="button" class="btn btn-primary btn-block")="Add new product"
+
