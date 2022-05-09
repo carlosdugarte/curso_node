@@ -18,14 +18,14 @@
     "id": 3
   },
   {
-    "title": "prueba carlos",
+    "title": "carlos",
     "price": "100",
     "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
     "id": 4
   },
   {
-    "title": "ender",
-    "price": "200",
+    "title": "eduardo",
+    "price": "20.5",
     "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
     "id": 5
   }
