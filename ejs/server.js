@@ -13,9 +13,9 @@ app.use(express.json())
 app.use(express.static('public')); 
 app.use(express.urlencoded({ extended: true }))
 
-//template pug
+//template ejs
 app.set('views', './views')
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 
 //Create router
 const routerTemplate = Router();
@@ -24,7 +24,7 @@ const routerTemplate = Router();
 //2.1. GET /productos/
 routerTemplate.get('/', async (req, res) => {
     const prods = await productos.getAll()
-    res.render('productos.pug', { products: prods, existProducts: prods.length }); 
+    res.render('pages/productos', { products: prods, existProducts: prods.length }); 
 })
 
 //2.2. POST /productos/
