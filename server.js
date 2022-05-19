@@ -1,17 +1,24 @@
 const express = require('express')
 const { Router } = express;
+const { Server: HttpServer } = require('http')
+const { Server: IOServer } = require('socket.io')
 var Contenedor = require('./Contenedor.js')
 
 //Instance contenedor
 const productos = new Contenedor('./productos.txt')
 
+//
+const mensajes = [];
+
 //Create express server
 const app = express()
+const httpServer = new HttpServer(app)
+const io = new IOServer(httpServer)
 
 //middlewares
 app.use(express.json())    
-app.use(express.static('public')); 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'));              //para dejar estática la carpeta public
+app.use(express.urlencoded({ extended: true })) //para utilizar formato json, sino se interpreta como string
 
 //template pug
 app.set('views', './views')
@@ -26,6 +33,10 @@ routerTemplate.get('/', async (req, res) => {
     const prods = await productos.getAll()
     res.render('productos.pug', { products: prods, existProducts: prods.length }); 
 })
+
+// app.get('/', (req, res) => {
+//     res.sendFile('index.html', {root: __dirname})
+// })
 
 //2.2. POST /productos/
 routerTemplate.post('/', async (req, res) =>{
@@ -52,10 +63,25 @@ routerTemplate.post('/', async (req, res) =>{
 //set routes
 app.use('/productos', routerTemplate);
 
+//comunicación websocket
+io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado!')
+
+    socket.emit('mensajes', mensajes)
+
+    socket.on('mensaje', data => {
+
+        console.log(data);
+        mensajes.push(data)
+        io.sockets.emit('mensajes', mensajes)
+    })
+})
+
+
 //listener
 const PORT = process.env.PORT || 8080;
 
-const server = app.listen(PORT, () => {
+const server = httpServer.listen(PORT, () => {
     console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
 })
 server.on("error", error => console.log(`Error en servidor ${error}`))

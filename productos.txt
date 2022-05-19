@@ -28,5 +28,11 @@
     "price": "20.5",
     "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
     "id": 5
+  },
+  {
+    "title": "probando",
+    "price": "4",
+    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
+    "id": 6
   }
 ]
