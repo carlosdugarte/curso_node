@@ -16,7 +16,7 @@
         <div class="jumbotron">
             <h1 class="titulos">Add products</h1>
             <br>
-            <form action="/productos" method="POST">
+            <form id="formProductos" >
                 <!-- Title field -->
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -34,10 +34,17 @@
                 </div>
                 <br><br>
                 <!-- Add button -->
-                <button class="btn btn-success btn-block">Add</button>
+                <button type="button" class="btn btn-success btn-block" onclick="addProductos(this)">Add</button>
             </form>
             <br>
             <!-- <a href="/productos" type="button" class="btn btn-primary btn-block">See Products</a> -->
+        </div>
+    </div>
+
+    <!-- Productos Creados-->
+    <div class="container mt-3">
+        <div id="datosProductos">
+            
         </div>
     </div>
 
@@ -54,9 +61,9 @@
 
                 <div class="input-group form-group mb-3">
                     <label for="inputMensaje">Message: </label>
-                    <input id="inputMensaje" type="text" class="form-control" placeholder="Enter message" aria-describedby="basic-addon2" required>
+                    <input id="inputMensaje" type="text" class="form-control" placeholder="Enter message" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button id="botonEnviarMensaje" type="button" class="btn btn-success btn-block" onclick="addMessage(this)">Send message</button>
+                        <button id="botonEnviarMensaje" type="button" class="btn btn-success btn-block" onclick="addMessage(this)" >Send message</button>
                     </div>
                 </div>
             </form>
@@ -64,8 +71,17 @@
             <p></p>
         </div>
     </div>
+    <!-- handlebars using in client side-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
     <!-- websocket for broadcasting data -->
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 </html>

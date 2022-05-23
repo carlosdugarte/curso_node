@@ -1,0 +1,28 @@
+<div class="jumbotron">
+    <h1 class="titulos">Vista de Productos</h1>
+    <br>
+
+    {{#if existProducts}}
+        <table class="table table-striped table-dark table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">NAME</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">PHOTO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td><img class="img-fluid" style="width:100px;height:100px;" src={{this.thumbnail}}  alt="not found"></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <h3 class="alert alert-warning">No se encontraron productos</h3>
+    {{/if}}
+
+</div>

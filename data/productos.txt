@@ -18,21 +18,15 @@
     "id": 3
   },
   {
-    "title": "carlos",
-    "price": "100",
+    "title": "prueba usuario carlos",
+    "price": "0.01",
     "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
     "id": 4
   },
   {
-    "title": "eduardo",
-    "price": "20.5",
-    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
+    "title": "prueba usuario ender",
+    "price": "0.03",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
     "id": 5
-  },
-  {
-    "title": "probando",
-    "price": "4",
-    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
-    "id": 6
   }
 ]
