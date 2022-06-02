@@ -1,75 +1,56 @@
+const express = require('express');
+const rutaApi = require('./routers/app.routers');
+const path = require('path');
+const { Server: HttpServer } = require('http');
+const { Server: IOServer } = require('socket.io');
 
-//Clase usuario
-class Usuario{
-    constructor(nombre, apellido){
-        this.nombre = nombre,
-        this.apellido = apellido,
-        this.libros = [],
-        this.mascotas = []        
-    }   
+const app = express();
+const httpserver = new HttpServer(app);
+const io = new IOServer(httpserver);
 
-    //Obtener apellido completo
-    getFullName(){
-        return (`${this.nombre} ${this.apellido}`)
-    }
+const PORT = process.env.PORT || 8080;
 
-    //Agregar mascota
-    addMascota(mascota){
-        this.mascotas.push(mascota);
-    }   
+//data
+const { Chat } = require('./models/index');
+const chat = new Chat();
+const { Productos } = require('./models/index');
+const productos = new Productos();
 
-    //contar mascotas
-    countMascotas(){
-        return this.mascotas.length;
-    }
-
-    //añadir libro
-    addBook(nombre, autor){
-        const libro =   {   
-                            nombre : nombre, 
-                            autor: autor
-                        }
-        this.libros.push(libro); 
-    }
-
-    //Obtener nombres de libros
-    getBookNames(){
-        const arrayNombreLibros = [];
-
-        for(let i=0; i < this.libros.length ; i++){
-            arrayNombreLibros.push(this.libros[i].nombre);
-        }
-
-        return arrayNombreLibros;
-    }
-
+const regenChat = () => {
+    const chats = chat.getAll();
+    chats.then(data => {
+        io.sockets.emit('regenerarChat', data);
+    });
 }
 
-//creación de objeto
-const usuario = new Usuario('Carlos','Dugarte');
+//publics static files
+app.use(express.static(path.resolve(__dirname, 'public')));
 
-//ejecución de los métodos
-//Obtener nombre completo
-console.log(usuario.getFullName());
+io.on('connection', async socket => {
+   
+    console.log('Cliente conectado: ' + socket.id);
+    regenChat();
 
-//agregar mascota
-usuario.addMascota('Perro');
-usuario.addMascota('Gato');
-console.log(usuario.mascotas);
+    socket.on('incomingMessage', async (message) => {
+        if(message.email){
+            await chat.save(message);
+            socket.emit('enviarMensaje', message);
+            regenChat();
+        }
+    });
 
-//Contar mascotas
-console.log(usuario.countMascotas());
+    socket.emit('regenerarProductos', await productos.getAll());    
+});
 
-//Agregar libros
-usuario.addBook('Harry Potter', 'JK Rowling');
-usuario.addBook('El señor de los anillos', 'J. R. R. Tolkien');
-usuario.addBook('El principito', 'Antoine de Saint-Exupéry');
-usuario.addBook('100 años de soledad', 'Gabriel García Marquez');
+//rutas
+app.use('/api', rutaApi);
 
-//Obtener libros
-console.log(usuario.getBookNames());
-
-//Objeto usuario
-console.log(usuario)
+app.get('/', (req, res) => {
+    res.sendfile(path.resolve(__dirname, './public/index.html'));
+})
 
 
+
+httpserver.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+})

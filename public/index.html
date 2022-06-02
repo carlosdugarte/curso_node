@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-md-12 mb-5 text-center">
+          <h3>Desafio Coder -- Bases de Datos: SQL</h3>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="row mb-5">
+          <form class="row g-3" method="post" action="/api/productos/">
+            <div class="col-md-10">
+              <label for="inpNombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inpNombre"
+                name="nombre"
+              />
+            </div>
+            <div class="col-md-2">
+              <label for="inpPrecio" class="form-label">Precio</label>
+              <input
+                type="numeric"
+                class="form-control"
+                id="inpPrecio"
+                name="precio"
+              />
+            </div>
+            <div class="col-12">
+              <label for="inpUrl" class="form-label">Imagen url</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inpUrl"
+                name="thumbnail"
+                placeholder="https://url.com"
+              />
+            </div>
+
+            <div class="col-12">
+              <button
+                id="btnGuardarProducto"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="tablaProductos" class="row mb-5"></div>
+
+        <div class="row">
+          <h3 class="h3 mb-4">Chatea con nosotros</h3>
+          <div class="row">
+            <div class="col-md-4">
+              <form class="row g-3" method="" action="">
+                <div class="col-md-12">
+                  <label for="inpEmail" class="form-label"
+                    >Ingresa tu email</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inpEmail"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label for="inpMensaje" class="form-label"
+                    >Escribe tu mensaje</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="inpMensaje"
+                    name="mensaje"
+                  ></textarea>
+                </div>
+                <div class="col-12">
+                  <button
+                    id="btnEnviarMensaje"
+                    type="button"
+                    class="btn btn-primary"
+                  >
+                    Enviar !
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-8">
+              <div id="listaMensajes" class="row mb-5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
